@@ -11,8 +11,8 @@ const defaultAlignments = {
   poNo: { x: 330, y: 719 }, poDate: { x: 330, y: 706 },
   vehicleNo: { x: 330, y: 692 }, transporter: { x: 330, y: 680 },
   
-  shippedName: { x: 255, y: 617 }, shippedAdd1: { x: 255, y: 603 }, shippedAdd2: { x: 255, y: 590 },
-  shippedState: { x: 255, y: 577 }, shippedGstin: { x: 255, y: 564 }, shippedIncoterms: { x: 255, y: 551 },
+  shippedName: { x: 355, y: 617 }, shippedAdd1: { x: 355, y: 603 }, shippedAdd2: { x: 355, y: 590 },
+  shippedState: { x: 355, y: 577 }, shippedGstin: { x: 355, y: 564 }, shippedIncoterms: { x: 355, y: 551 },
 
   desc1: { x: 21, y: 483 }, hsn1: { x: 210, y: 483 }, size1: { x: 263, y: 483 }, qty1: { x: 290, y: 483 }, uom1: { x: 337, y: 483 },
   basic1: { x: 356, y: 483 }, transport1: { x: 409, y: 483 }, net1: { x: 454, y: 483 }, total1: { x: 526, y: 483 },
