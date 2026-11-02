@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+// @ts-ignore
 import { toWords } from 'number-to-words';
 
 // బయట డిఫైన్ చేసాం, టైప్స్ ఎర్రర్ రాకుండా ఉండటానికి
