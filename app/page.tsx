@@ -37,11 +37,9 @@ export default function Home() {
     shippedName: { x: 255, y: 617 }, shippedAdd1: { x: 255, y: 603 }, shippedAdd2: { x: 255, y: 590 },
     shippedState: { x: 255, y: 577 }, shippedGstin: { x: 255, y: 564 }, shippedIncoterms: { x: 255, y: 551 },
 
-    // Item 1
     desc1: { x: 21, y: 483 }, hsn1: { x: 210, y: 483 }, size1: { x: 263, y: 483 }, qty1: { x: 290, y: 483 }, uom1: { x: 337, y: 483 },
     basic1: { x: 356, y: 483 }, transport1: { x: 409, y: 483 }, net1: { x: 454, y: 483 }, total1: { x: 526, y: 483 },
     
-    // Item 2
     desc2: { x: 21, y: 458 }, hsn2: { x: 215, y: 458 }, size2: { x: 272, y: 458 }, qty2: { x: 295, y: 458 }, uom2: { x: 333, y: 458 },
     basic2: { x: 345, y: 458 }, transport2: { x: 400, y: 458 }, net2: { x: 450, y: 458 }, total2: { x: 520, y: 458 },
 
@@ -124,7 +122,7 @@ export default function Home() {
         });
       };
 
-      draw(formData.irn, 'irn', false, 7.5); // IRN size updated
+      draw(formData.irn, 'irn', false, 7.5); 
       draw(formData.invoiceNo, 'invoiceNo'); draw(formData.invoiceDate, 'invoiceDate');
       draw(formData.poNo, 'poNo'); draw(formData.poDate, 'poDate');
       draw(formData.vehicleNo, 'vehicleNo'); draw(formData.transporter, 'transporter');
@@ -171,54 +169,61 @@ export default function Home() {
     }
   };
 
-  const inputStyle = { padding: '5px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '11px', width: '100%', boxSizing: 'border-box' as const };
+  const inputStyle = { padding: '8px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '12px', width: '100%', boxSizing: 'border-box' as const };
   const alignBox = { padding: '5px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' };
 
   if (!isClient) return null;
 
   return (
-    <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'sans-serif' }}>
-      <h2 style={{ borderBottom: '2px solid #000', paddingBottom: '10px' }}>KNR Invoice - Multi-Item Fully Dynamic Tool</h2>
+    <div style={{ padding: '15px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'sans-serif' }}>
+      <h2 style={{ borderBottom: '2px solid #000', paddingBottom: '10px', fontSize: '20px' }}>KNR Invoice - Mobile Friendly</h2>
       
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <div style={{ flex: 1.5 }}>
+      {/* flexWrap: 'wrap' వల్లే మొబైల్ లో ప్యానెల్స్ కిందకి వెళ్తాయి */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        
+        {/* LEFT PANEL: FORM INPUTS */}
+        <div style={{ flex: '1 1 60%', minWidth: '300px' }}>
           <h4 style={{ margin: '10px 0' }}>1. Enter Details</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-            <div style={{ gridColumn: 'span 3' }}><label style={{fontSize:'10px'}}>IRN Code</label><input name="irn" value={formData.irn} onChange={handleFormChange} style={inputStyle} /></div>
+          
+          {/* gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))' వల్లే బాక్సులు ఆటోమెటిక్ గా సైజ్ అడ్జస్ట్ అవుతాయి */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
+            <div style={{ gridColumn: '1 / -1' }}><label style={{fontSize:'10px', fontWeight:'bold'}}>IRN Code</label><input name="irn" value={formData.irn} onChange={handleFormChange} style={inputStyle} /></div>
             
-            <div><label style={{fontSize:'10px'}}>Invoice No</label><input name="invoiceNo" value={formData.invoiceNo} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Invoice Date</label><input name="invoiceDate" value={formData.invoiceDate} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>PO No</label><input name="poNo" value={formData.poNo} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>PO Date</label><input name="poDate" value={formData.poDate} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Vehicle No</label><input name="vehicleNo" value={formData.vehicleNo} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Transporter</label><input name="transporter" value={formData.transporter} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Invoice No</label><input name="invoiceNo" value={formData.invoiceNo} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Invoice Date</label><input name="invoiceDate" value={formData.invoiceDate} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>PO No</label><input name="poNo" value={formData.poNo} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>PO Date</label><input name="poDate" value={formData.poDate} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Vehicle No</label><input name="vehicleNo" value={formData.vehicleNo} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Transporter</label><input name="transporter" value={formData.transporter} onChange={handleFormChange} style={inputStyle} /></div>
             
-            <div style={{ gridColumn: 'span 3', borderTop: '1px solid #ccc', margin: '10px 0' }}></div>
+            <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #ccc', margin: '10px 0' }}></div>
             
-            <div><label style={{fontSize:'10px'}}>Shipped Consignee (Bold)</label><input name="shippedName" value={formData.shippedName} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Shipped Addr 1</label><input name="shippedAdd1" value={formData.shippedAdd1} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Shipped Addr 2</label><input name="shippedAdd2" value={formData.shippedAdd2} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Shipped State</label><input name="shippedState" value={formData.shippedState} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Shipped GSTIN</label><input name="shippedGstin" value={formData.shippedGstin} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Incoterms</label><input name="shippedIncoterms" value={formData.shippedIncoterms} onChange={handleFormChange} style={inputStyle} /></div>
+            <div style={{ gridColumn: '1 / -1' }}><label style={{fontSize:'10px', fontWeight:'bold'}}>Shipped Consignee (Bold)</label><input name="shippedName" value={formData.shippedName} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Shipped Addr 1</label><input name="shippedAdd1" value={formData.shippedAdd1} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Shipped Addr 2</label><input name="shippedAdd2" value={formData.shippedAdd2} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Shipped State</label><input name="shippedState" value={formData.shippedState} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Shipped GSTIN</label><input name="shippedGstin" value={formData.shippedGstin} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Incoterms</label><input name="shippedIncoterms" value={formData.shippedIncoterms} onChange={handleFormChange} style={inputStyle} /></div>
             
-            <div style={{ gridColumn: 'span 3', borderTop: '1px solid #ccc', margin: '10px 0' }}></div>
+            <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #ccc', margin: '10px 0' }}></div>
 
-            <div style={{ gridColumn: 'span 3' }}><label style={{fontSize:'10px', color:'blue'}}>ITEM 1</label></div>
-            <div><label style={{fontSize:'10px'}}>Desc 1</label><input name="desc1" value={formData.desc1} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Size PCS Top</label><input name="size1Top" value={formData.size1Top} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Size PCS Bot</label><input name="size1Bot" value={formData.size1Bot} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Qty 1</label><input name="qty1" value={formData.qty1} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Basic Rate 1</label><input name="basic1" value={formData.basic1} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Transport 1</label><input name="transport1" value={formData.transport1} onChange={handleFormChange} style={inputStyle} /></div>
+            <div style={{ gridColumn: '1 / -1' }}><label style={{fontSize:'12px', color:'blue', fontWeight:'bold'}}>ITEM 1</label></div>
+            <div style={{ gridColumn: '1 / -1' }}><label style={{fontSize:'10px', fontWeight:'bold'}}>Desc 1</label><input name="desc1" value={formData.desc1} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Size PCS Top</label><input name="size1Top" value={formData.size1Top} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Size PCS Bot</label><input name="size1Bot" value={formData.size1Bot} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Qty 1</label><input name="qty1" value={formData.qty1} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Basic Rate 1</label><input name="basic1" value={formData.basic1} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Transport 1</label><input name="transport1" value={formData.transport1} onChange={handleFormChange} style={inputStyle} /></div>
             
-            <div style={{ gridColumn: 'span 3' }}><label style={{fontSize:'10px', color:'blue'}}>ITEM 2 (Optional Rates)</label></div>
-            <div><label style={{fontSize:'10px'}}>Desc 2</label><input name="desc2" value={formData.desc2} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Size PCS Top</label><input name="size2Top" value={formData.size2Top} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Size PCS Bot</label><input name="size2Bot" value={formData.size2Bot} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Qty 2</label><input name="qty2" value={formData.qty2} onChange={handleFormChange} style={inputStyle} /></div>
-            <div><label style={{fontSize:'10px'}}>Basic Rate 2</label><input name="basic2" value={formData.basic2} onChange={handleFormChange} style={inputStyle} placeholder="Leave blank if none" /></div>
-            <div><label style={{fontSize:'10px'}}>Transport 2</label><input name="transport2" value={formData.transport2} onChange={handleFormChange} style={inputStyle} placeholder="Leave blank if none" /></div>
+            <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #eee', margin: '5px 0' }}></div>
+            
+            <div style={{ gridColumn: '1 / -1' }}><label style={{fontSize:'12px', color:'blue', fontWeight:'bold'}}>ITEM 2 (Optional Rates)</label></div>
+            <div style={{ gridColumn: '1 / -1' }}><label style={{fontSize:'10px', fontWeight:'bold'}}>Desc 2</label><input name="desc2" value={formData.desc2} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Size PCS Top</label><input name="size2Top" value={formData.size2Top} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Size PCS Bot</label><input name="size2Bot" value={formData.size2Bot} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Qty 2</label><input name="qty2" value={formData.qty2} onChange={handleFormChange} style={inputStyle} /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Basic Rate 2</label><input name="basic2" value={formData.basic2} onChange={handleFormChange} style={inputStyle} placeholder="Leave blank if none" /></div>
+            <div><label style={{fontSize:'10px', fontWeight:'bold'}}>Transport 2</label><input name="transport2" value={formData.transport2} onChange={handleFormChange} style={inputStyle} placeholder="Leave blank if none" /></div>
           </div>
           
           <button onClick={generatePDF} style={{ marginTop: '20px', padding: '15px', backgroundColor: '#0070f3', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '16px', fontWeight: 'bold', width: '100%', borderRadius: '5px' }}>
@@ -226,7 +231,8 @@ export default function Home() {
           </button>
         </div>
 
-        <div style={{ flex: 1, backgroundColor: '#f9f9f9', padding: '10px', borderRadius: '5px', border: '1px solid #ddd' }}>
+        {/* RIGHT PANEL: ALIGNMENT CONTROLS */}
+        <div style={{ flex: '1 1 35%', minWidth: '300px', backgroundColor: '#f9f9f9', padding: '15px', borderRadius: '5px', border: '1px solid #ddd' }}>
           <h4 style={{ margin: '0 0 10px 0' }}>2. X/Y Alignment Settings</h4>
           
           <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
